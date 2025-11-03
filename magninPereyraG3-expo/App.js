@@ -1,4 +1,4 @@
-// App.js
+
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -11,20 +11,20 @@ import Profile from "./src/screens/Profile";
 import NewPost from "./src/screens/NewPost";
 
 const Stack = createNativeStackNavigator();
-const Tab = createBottomTabNavigator();
 
 function Tabs() {
   return (
-    <Tab.Navigator screenOptions={{ tabBarShowLabel: false }}>
-      <Tab.Screen name="Home" component={Home} />
-      <Tab.Screen name="NewPost" component={NewPost} />
-      <Tab.Screen name="Profile" component={Profile} />
-      <Tab.Screen name="Login" component={Login} />
-      <Tab.Screen name="Register" component={Register} />
-    </Tab.Navigator>
+    <NavigationContainer>
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="Home" component={Home} />
+      <Stack.Screen name="NewPost" component={NewPost} />
+      <Stack.Screen name="Profile" component={Profile} />
+      <Stack.Screen name="Login" component={Login} />
+      <Stack.Screen name="Register" component={Register} />
+      <Stack.Screen name="Header" component={Header} />
+    </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-
 
 
