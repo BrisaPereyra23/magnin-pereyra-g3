@@ -6,9 +6,17 @@ class NewPost extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      likeado: false,
+      description: '',
+      error: ''
     };
   }
+
+  //ver si va esto o no quizas lo hice al pedo
+  crearPost() {
+    if (this.state.description === "") {
+      this.setState({ error: "El post no puede estar vacío." });
+      return;
+    }}
 
   componentDidMount() {
     const { data } = this.props;
@@ -17,6 +25,7 @@ class NewPost extends Component {
     }
   }
 
+//creo que asi no es
   like() {
     const { id, data } = this.props;
     const nuevosLikes = [...data.likes, auth.currentUser.email];

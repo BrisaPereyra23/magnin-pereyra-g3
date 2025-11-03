@@ -26,7 +26,7 @@ class Login extends Component {
 
   auth.signInWithEmailAndPassword(email, password)
     .then(() => {
-      this.props.navigation.navigate('HomeMenu');
+      this.props.navigation.navigate('HomeTab');
     })
     .catch((error) => { 
   console.log('Error al iniciar sesión:', error);
