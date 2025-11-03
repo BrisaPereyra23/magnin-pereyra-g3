@@ -9,10 +9,11 @@ import Login from "./src/screens/Login";
 import Register from "./src/screens/Register";
 import Profile from "./src/screens/Profile";
 import NewPost from "./src/screens/NewPost";
+import Header from "./src/components/Header";
 
 const Stack = createNativeStackNavigator();
-// comentario de prueba
-function Tabs() {
+
+function App() {
   return (
     <NavigationContainer>
     <Stack.Navigator screenOptions={{ headerShown: false }}>
@@ -27,5 +28,4 @@ function Tabs() {
   );
 }
 
-
-//hola comentario de prueba 2
+export default App
