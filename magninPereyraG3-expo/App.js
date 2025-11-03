@@ -9,7 +9,6 @@ import Login from "./src/screens/Login";
 import Register from "./src/screens/Register";
 import Profile from "./src/screens/Profile";
 import NewPost from "./src/screens/NewPost";
-import Header from "./src/components/Header";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -22,7 +21,6 @@ function Tabs() {
       <Tab.Screen name="Profile" component={Profile} />
       <Tab.Screen name="Login" component={Login} />
       <Tab.Screen name="Register" component={Register} />
-      <Tab.Screen name="Header" component={Header} />
     </Tab.Navigator>
   );
 }
