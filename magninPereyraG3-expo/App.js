@@ -1,12 +1,35 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+// App.js
+import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import {FontAwesome} from '@expo/vector-icons';
+import Home from "./src/screens/Home";
+import Login from "./src/screens/Login";
+import Register from "./src/screens/Register";
+import Profile from "./src/screens/Profile";
+import NuevoPost from "./src/screens/NewPost";
 
-export default function App() {
+const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
+
+function Tabs() {
   return (
-    <View style={styles.container}>
-    </View>
+    <Tab.Navigator screenOptions={{ tabBarShowLabel: false }}>
+      <Tab.Screen name="Home" component={Home} />
+      <Tab.Screen name="Nuevo Post" component={NewPost} />
+      <Tab.Screen name="Perfil" component={Profile} />
+    </Tab.Navigator>
   );
 }
 
-
-
+export default function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator >
+        <Stack.Screen name="Login" component={Login}/>
+        <Stack.Screen name="Register" component={Register}/>
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
