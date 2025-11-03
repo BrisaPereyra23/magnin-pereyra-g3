@@ -8,7 +8,8 @@ import Home from "./src/screens/Home";
 import Login from "./src/screens/Login";
 import Register from "./src/screens/Register";
 import Profile from "./src/screens/Profile";
-import NuevoPost from "./src/screens/NewPost";
+import NewPost from "./src/screens/NewPost";
+import Header from "./src/components/Header";
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
