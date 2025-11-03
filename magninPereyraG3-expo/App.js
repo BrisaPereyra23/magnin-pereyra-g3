@@ -17,8 +17,11 @@ function Tabs() {
   return (
     <Tab.Navigator screenOptions={{ tabBarShowLabel: false }}>
       <Tab.Screen name="Home" component={Home} />
-      <Tab.Screen name="Nuevo Post" component={NewPost} />
-      <Tab.Screen name="Perfil" component={Profile} />
+      <Tab.Screen name="NewPost" component={NewPost} />
+      <Tab.Screen name="Profile" component={Profile} />
+      <Tab.Screen name="Login" component={Login} />
+      <Tab.Screen name="Register" component={Register} />
+      <Tab.Screen name="Header" component={Header} />
     </Tab.Navigator>
   );
 }
