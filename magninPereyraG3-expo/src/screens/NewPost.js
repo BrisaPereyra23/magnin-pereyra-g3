@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { View, Text, Pressable, StyleSheet } from "react-native";
 import { db, auth } from "../firebase/config";
 
-class Post extends Component {
+class NewPost extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -80,8 +80,8 @@ class Post extends Component {
   }
 }
 
-export default Post;
-
+export default NewPost;
+""
 const styles = StyleSheet.create({
   card: {
     backgroundColor: "#f5f5f5",
