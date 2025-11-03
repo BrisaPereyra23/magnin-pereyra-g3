@@ -1,5 +1,8 @@
 {
   "dependencies": {
-    "firebase": "^8.10.1"
+    "expo": "^54.0.21",
+    "firebase": "^8.10.1",
+    "react-dom": "19.1.0",
+    "react-native-web": "^0.21.0"
   }
 }

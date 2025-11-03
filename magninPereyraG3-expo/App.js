@@ -1,9 +1,7 @@
 
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import {FontAwesome} from '@expo/vector-icons';
+import { createNativeStackNavigator } from "@react-navigation/native-stack"; // no lw gusat etso 
 import Home from "./src/screens/Home";
 import Login from "./src/screens/Login";
 import Register from "./src/screens/Register";
@@ -27,5 +25,5 @@ function App() {
     </NavigationContainer>
   );
 }
-
-export default App
+// hola no anda diosgit add
+export default App;
