@@ -11,7 +11,7 @@ import Profile from "./src/screens/Profile";
 import NewPost from "./src/screens/NewPost";
 
 const Stack = createNativeStackNavigator();
-
+// comentario de prueba
 function Tabs() {
   return (
     <NavigationContainer>
