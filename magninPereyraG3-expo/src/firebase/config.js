@@ -16,3 +16,5 @@ app.initializeApp(firebaseConfig);
 export const auth = firebase.auth();
 export const storage = app.storage();
 export const db = app.firestore();
+
+ // agrego esto hay que cambiarlo dependiendo que se hace en login register para que funcione dsp chequear
