@@ -17,6 +17,8 @@ class Home extends Component {
     return (
         <View>
         <Text>Bienvenido al Home</Text>
+        <Text>Posteos:</Text>
+        <FlatList><Text>aca va la flatlist</Text></FlatList>
         </View>
     )
   }
