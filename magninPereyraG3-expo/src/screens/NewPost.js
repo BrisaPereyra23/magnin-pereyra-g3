@@ -1,106 +1,82 @@
 import React, { Component } from "react";
-import { View, Text, Pressable, StyleSheet } from "react-native";
+import { View, Text, TextInput, Pressable, StyleSheet } from "react-native";
 import { db, auth } from "../firebase/config";
 
 class NewPost extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      description: '',
-      error: ''
+      description: "",
+      error: "",
     };
   }
 
-  //ver si va esto o no quizas lo hice al pedo
   crearPost() {
     if (this.state.description === "") {
       this.setState({ error: "El post no puede estar vacío." });
       return;
-    }}
-
-  componentDidMount() {
-    const { data } = this.props;
-    if (data.likes.includes(auth.currentUser.email)) {
-      this.setState({ likeado: true });
     }
-  }
-
-//creo que asi no es
-  like() {
-    const { id, data } = this.props;
-    const nuevosLikes = [...data.likes, auth.currentUser.email];
 
     db.collection("posts")
-      .doc(id)
-      .update({
-        likes: nuevosLikes,
+      .add({
+        owner: auth.currentUser.email,
+        description: this.state.description,
+        likes: [],
+        createdAt: new Date(), // forma básica que ya viste
       })
-      .then(() => this.setState({ likeado: true }))
-      .catch((e) => console.log(e));
-  }
-
-  dislike() {
-    const { id, data } = this.props;
-    const nuevosLikes = data.likes.filter(
-      (email) => email !== auth.currentUser.email
-    );
-
-    db.collection("posts")
-      .doc(id)
-      .update({
-        likes: nuevosLikes,
+      .then(() => {
+        this.setState({ description: "", error: "" });
+        this.props.navigation.navigate("Home");
       })
-      .then(() => this.setState({ likeado: false }))
-      .catch((e) => console.log(e));
-  }
-
-  deletePost() {
-    const { id } = this.props;
-    db.collection("posts").doc(id).delete();
+      .catch(() => {
+        this.setState({ error: "Error al crear el post." });
+      });
   }
 
   render() {
-    const { data } = this.props;
-
     return (
-      <View style={styles.card}>
-        <Text style={styles.owner}>{data.owner}</Text>
-        <Text style={styles.description}>{data.description}</Text>
+      <View style={styles.container}>
+        <Text style={styles.title}>Nuevo Post</Text>
 
-        <Text style={styles.likes}>{data.likes.length} me gusta</Text>
+        <TextInput
+          style={styles.field}
+          placeholder="Escribí tu post..."
+          multiline
+          onChangeText={(text) => this.setState({ description: text })}
+          value={this.state.description}
+        />
 
-        <Pressable
-          onPress={() =>
-            this.state.likeado ? this.dislike() : this.like()
-          }
-        >
-          <Text style={styles.likeBtn}>
-            {this.state.likeado ? "Quitar me gusta" : "Me gusta"}
-          </Text>
+        <Pressable style={styles.button} onPress={() => this.crearPost()}>
+          <Text style={styles.buttonText}>Publicar</Text>
         </Pressable>
 
-        {data.owner === auth.currentUser.email && (
-          <Pressable onPress={() => this.deletePost()}>
-            <Text style={styles.deleteBtn}> Borrar</Text>
-          </Pressable>
+        {this.state.error !== "" && (
+          <Text style={styles.error}>{this.state.error}</Text>
         )}
       </View>
     );
   }
 }
 
-export default NewPost;
-""
 const styles = StyleSheet.create({
-  card: {
-    backgroundColor: "#f5f5f5",
+  container: { flex: 1, padding: 15, backgroundColor: "#fff" },
+  title: { fontSize: 22, textAlign: "center", marginBottom: 15 },
+  field: {
+    borderWidth: 1,
+    borderColor: "#ccc",
+    borderRadius: 8,
     padding: 10,
-    borderRadius: 10,
-    marginVertical: 8,
+    minHeight: 80,
+    marginBottom: 15,
   },
-  owner: { fontWeight: "bold", fontSize: 14 },
-  description: { marginVertical: 5, fontSize: 16 },
-  likes: { color: "gray", fontSize: 14 },
-  likeBtn: { color: "#0080ff", marginTop: 5 },
-  deleteBtn: { color: "red", marginTop: 5 },
+  button: {
+    backgroundColor: "#007bff",
+    padding: 10,
+    borderRadius: 8,
+    alignItems: "center",
+  },
+  buttonText: { color: "#fff", fontSize: 16 },
+  error: { color: "red", textAlign: "center", marginTop: 10 },
 });
+
+export default NewPost;
