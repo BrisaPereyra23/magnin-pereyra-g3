@@ -37,7 +37,7 @@ function HomeTab() {
       component={NewPost}
       options={{
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="post" size={size} color={color} />
+            <Ionicons name="add-circle" size={size} color={color} />
           ),
         }}
       />
