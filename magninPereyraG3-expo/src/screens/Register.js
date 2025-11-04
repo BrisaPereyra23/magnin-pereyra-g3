@@ -91,20 +91,12 @@ class Register extends Component {
           value={this.state.password}
         />
 
-        <TextInput
-          style={styles.input}
-          placeholder="Nombre de usuario"
-          onChangeText={(text) => this.setState({ username: text })}
-          value={this.state.username}
-        />
-
-
         <Pressable style={styles.button} onPress={() => this.onSubmit(this.state.email, this.state.password, this.state.username)}>
           <Text style={styles.buttonText}>Registrarse</Text>
         </Pressable>
 
         <Pressable
-          style={[styles.button, { backgroundColor: '#007bff', borderColor: '#007bff' }]}
+          style={[styles.button, {  }]}
           onPress={() => this.props.navigation.navigate('Login')}
         >
           <Text style={styles.buttonText}>Ir a Login</Text>
@@ -119,6 +111,7 @@ class Register extends Component {
 
 const styles = StyleSheet.create({
   container: {}
+  
   
 });
 

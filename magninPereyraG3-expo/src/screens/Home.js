@@ -32,9 +32,9 @@ class Home extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.title}>Home</Text>
+        <Text style={styles.title}>Car Crew</Text>
         {this.state.loading ? (
-          <ActivityIndicator size="large" color="blue" />
+          <ActivityIndicator size="large"  />
         ) : (
           <FlatList
             data={this.state.posts}

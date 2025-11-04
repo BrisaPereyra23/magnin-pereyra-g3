@@ -75,7 +75,7 @@ class Login extends Component {
           style={[styles.button, styles.buttonAlt]}
           onPress={() => this.props.navigation.navigate('Register')}
         >
-          <Text style={styles.buttonText}>Ir a Registro</Text>
+          <Text style={styles.buttonText}>Registrate</Text>
         </Pressable>
 
         {this.state.error !== '' && (
@@ -87,8 +87,6 @@ class Login extends Component {
 }
 
 const styles = StyleSheet.create({
-  container: {}
-  
-});
+  container: {}});
 
 export default Login;
