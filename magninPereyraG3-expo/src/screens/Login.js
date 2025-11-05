@@ -86,7 +86,60 @@ class Login extends Component {
   }
 }
 
-const styles = StyleSheet.create({
-  container: {}});
+
 
 export default Login;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#1a1a1a",
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 20,
+  },
+  title: {
+    color: "#ff4d4d",
+    fontSize: 24,
+    fontWeight: "bold",
+    marginBottom: 30,
+    textAlign: "center",
+    letterSpacing: 1,
+  },
+  field: {
+    width: "90%",
+    backgroundColor: "#2b2b2b",
+    color: "#f2f2f2",
+    borderWidth: 1,
+    borderColor: "#444",
+    borderRadius: 10,
+    padding: 12,
+    fontSize: 16,
+    marginBottom: 15,
+  },
+  button: {
+    width: "90%",
+    backgroundColor: "#ff4d4d",
+    borderRadius: 10,
+    paddingVertical: 12,
+    marginTop: 5,
+    marginBottom: 10,
+  },
+  buttonAlt: {
+    backgroundColor: "#333",
+    borderWidth: 1,
+    borderColor: "#ff4d4d",
+  },
+  buttonText: {
+    color: "#fff",
+    textAlign: "center",
+    fontWeight: "bold",
+    fontSize: 16,
+  },
+  errorText: {
+    color: "#ff8080",
+    marginTop: 10,
+    textAlign: "center",
+    fontWeight: "500",
+  },
+});
+

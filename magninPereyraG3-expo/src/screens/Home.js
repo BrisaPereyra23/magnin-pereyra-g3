@@ -54,8 +54,23 @@ class Home extends Component {
 export default Home;
 
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: 10, backgroundColor: "#fff" },
-  title: { fontSize: 24, textAlign: "center", marginVertical: 10 },
-  noPost: {}
+  container: {
+    flex: 1,
+    padding: 16,
+  },
+  title: {
+    fontSize: 28,
+    textAlign: "center",
+    marginVertical: 16,
+    fontWeight: "bold",
+    backgroundColor: ' #001258',
+    borderRadius: 5,
+    
+  },
+  noPosts: {
+    fontSize: 16,
+    textAlign: "center",
+    color: "#777",
+    marginTop: 20,
+  },
 });
-

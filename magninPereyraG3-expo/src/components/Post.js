@@ -1,4 +1,3 @@
-import react from 'react';
 import React, { Component } from 'react';
 import { View, Text, TextInput, Pressable, StyleSheet } from 'react-native';
 import { db, auth } from '../firebase/config';
@@ -47,17 +46,21 @@ class Post extends Component {
       render() {
     return (
       <View style={styles.card}>
-        <Text style={styles.owner}>{this.props.data.owner}</Text>
-        <Text>{this.props.data.description}</Text>
-        <Text>Likes: {this.props.data.likes.length}</Text>
+      <Text style={styles.owner}>{this.props.data.owner}</Text>
+      <Text style={styles.description}>{this.props.data.description}</Text>
 
-        <Pressable style={styles.btn} onPress={() => this.like()}>
+      <View style={styles.likeRow}>
+        <Text style={styles.likesText}>❤️ {this.props.data.likes.length}</Text>
+
+        <Pressable style={styles.btnLike} onPress={() => this.like()}>
           <Text style={styles.btnText}>Like</Text>
         </Pressable>
 
-        <Pressable style={styles.btn} onPress={() => this.dislike()}> {/*ver si lo vimos asi */}
+        <Pressable style={styles.btnDislike} onPress={() => this.dislike()}>
           <Text style={styles.btnText}>Dislike</Text>
         </Pressable>
+      </View>
+    
 
         {/*<TextInput
           style={styles.input}
@@ -79,9 +82,85 @@ class Post extends Component {
             ))} chequear creo que falta el contructor con comment vacio */}
       </View>
     );
-  }
-  }
-const styles = StyleSheet.create({
-    container: {},});
+    }}
+
 
 export default Post;
+
+const styles = StyleSheet.create({
+  card: {
+    borderRadius: 14,
+    borderWidth: 1,
+    borderColor: "#333",
+    padding: 15,
+    marginVertical: 10,
+    backgroundColor: "#fff",
+  },
+  owner: {
+    fontWeight: "bold",
+    color: 'rgb#131111(19 17 17)',
+    fontSize: 15,
+    marginBottom: 6,
+  },
+  description: {
+    fontSize: 16,
+   color: 'rgb#131111(19 17 17)',
+    marginBottom: 10,
+  },
+  likeRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "flex-start",
+    gap: 15,
+    marginBottom: 10,
+  },
+  likesText: {
+    fontSize: 15,
+    color: "#ff4d4d",
+    fontWeight: "bold",
+  },
+  likeBtn: {
+    backgroundColor: "#2b2b2b",
+    paddingVertical: 5,
+    paddingHorizontal: 15,
+    borderRadius: 20,
+    borderWidth: 1,
+    borderColor: "#ff4d4d",
+  },
+  likeText: {
+    color: "#ff4d4d",
+    fontWeight: "600",
+  },
+  dislikeBtn: {
+    backgroundColor: "#2b2b2b",
+    paddingVertical: 5,
+    paddingHorizontal: 15,
+    borderRadius: 20,
+    borderWidth: 1,
+    borderColor: "#999",
+  },
+  dislikeText: {
+    
+    fontWeight: "600",
+  },
+  commentSection: {
+    borderTopWidth: 1,
+    borderTopColor: "#333",
+    paddingTop: 10,
+    color: 'rgb#131111(19 17 17)'
+  },
+  input: {
+    backgroundColor: "#262626",
+    borderRadius: 8,
+    padding: 8,
+    color: 'rgb#131111(19 17 17)',
+    marginBottom: 6,
+    borderWidth: 1,
+    borderColor: "#444",
+  },
+  commentButton: {
+    color: "#ff4d4d",
+    textAlign: "right",
+    fontWeight: "bold",
+  },
+});
