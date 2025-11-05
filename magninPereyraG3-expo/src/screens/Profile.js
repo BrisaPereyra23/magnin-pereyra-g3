@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, Text, Pressable, StyleSheet } from 'react-native';
+import { Component } from 'react';
+import { View, Text, Pressable, StyleSheet} from 'react-native';
 import { auth }  from '../firebase/config';
 
 class Profile extends Component {

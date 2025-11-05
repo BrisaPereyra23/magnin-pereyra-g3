@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { View, Text, FlatList, ActivityIndicator, StyleSheet } from "react-native";
 import { db } from "../firebase/config";
-import Post from "../components/Post";
+import NewPost from "../components/NewPost";
 
 class Home extends Component {
   constructor() {
@@ -16,7 +16,7 @@ class Home extends Component {
     db.collection("posts").orderBy("createdAt", "desc").onSnapshot((docs) => {
       let postsAct = [];
       docs.forEach((doc) => {
-        posts.push({
+        postsAct.push({
           id: doc.id,
           data: doc.data(),
         });
@@ -42,7 +42,7 @@ class Home extends Component {
             data={this.state.posts}
             keyExtractor={(item) => item.id.toString()}
             renderItem={({ item }) => (
-              <Post id={item.id} data={item.data} />
+              <NewPost id={item.id} data={item.data} />
             )}
           />
         )}
