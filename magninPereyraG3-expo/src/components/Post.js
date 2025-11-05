@@ -55,9 +55,28 @@ class Post extends Component {
           <Text style={styles.btnText}>Like</Text>
         </Pressable>
 
-        <Pressable style={styles.btn} onPress={() => this.dislike()}>
+        <Pressable style={styles.btn} onPress={() => this.dislike()}> {/*ver si lo vimos asi */}
           <Text style={styles.btnText}>Dislike</Text>
         </Pressable>
+
+        {/*<TextInput
+          style={styles.input}
+          placeholder="Escribí un comentario..."
+          value={this.state.comment}
+          onChangeText={(text) => this.setState({ comment: text })}
+        />
+
+         <Pressable style={styles.btn} onPress={() => this.comentar()}>
+          <Text style={styles.btnText}>Comentar</Text>
+        </Pressable>
+
+          {this.props.data.comments && this.props.data.comments.length > 0 && (
+          <View style={styles.commentSection}>
+            {this.props.data.comments.map((c, i) => (
+              <Text key={i}>
+                {c.owner}: {c.text}
+              </Text>
+            ))} chequear creo que falta el contructor con comment vacio */}
       </View>
     );
   }
