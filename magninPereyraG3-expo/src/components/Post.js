@@ -3,6 +3,13 @@ import { View, Text, TextInput, Pressable, StyleSheet } from 'react-native';
 import { db, auth } from '../firebase/config';
 
 class Post extends Component {
+  constructor(props) {
+  super(props);
+  this.state = {
+    comment: "", 
+  };
+}
+
     like = () => { // no vimos con => pero lo pongo para que no marque error y hay que preguntar
         if (!this.props.data.likes.includes (auth.currentUser.email)){
           this.props.data.likes.push (auth.currentUser.email)
@@ -24,8 +31,8 @@ class Post extends Component {
       }
       
       comentar = () => {
-        if (this.state.comments !== ""){
-          let comments;
+        if (this.state.comment !== ""){
+          let comentario;
     
           if (this.props.data.comments){
             comentario = this.props.data.comments;
@@ -35,7 +42,7 @@ class Post extends Component {
     
           comentario.push ({
             owner: auth.currentUser.email,
-            comment: this.state.comments
+            comment: this.state.comment
           })
           
           db.collection ("posts").doc (this.props.id).update ({ comments: comentario })
@@ -62,7 +69,7 @@ class Post extends Component {
       </View>
     
 
-        {/*<TextInput
+        <TextInput
           style={styles.input}
           placeholder="Escribí un comentario..."
           value={this.state.comment}
@@ -75,18 +82,18 @@ class Post extends Component {
 
           {this.props.data.comments && this.props.data.comments.length > 0 && (
           <View style={styles.commentSection}>
-            {this.props.data.comments.map((c, i) => (
-              <Text key={i}>
-                {c.owner}: {c.text}
-              </Text>
-            ))} chequear creo que falta el contructor con comment vacio */}
-      </View>
-    );
-    }}
-
+          {this.props.data.comments.map((c, i) => (
+          <Text key={i}> {c.owner}: {c.comment}</Text>
+    ))}
+  </View>
+)}
+</View>
+);
+      }
+    }
 
 export default Post;
-
+      
 const styles = StyleSheet.create({
   card: {
     borderRadius: 14,
@@ -147,7 +154,7 @@ const styles = StyleSheet.create({
     borderTopWidth: 1,
     borderTopColor: "#333",
     paddingTop: 10,
-    color: 'rgb#131111(19 17 17)'
+    color: "rgb(19, 17, 17)"
   },
   input: {
     backgroundColor: "#262626",
