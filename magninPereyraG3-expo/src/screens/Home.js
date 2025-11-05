@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { View, Text, FlatList, ActivityIndicator, StyleSheet } from "react-native";
 import { db } from "../firebase/config";
-import NewPost from "./NewPost";
+import Post from "../components/Post";
 
 class Home extends Component {
   constructor() {
@@ -42,7 +42,7 @@ class Home extends Component {
             data={this.state.posts}
             keyExtractor={(item) => item.id.toString()}
             renderItem={({ item }) => (
-              <NewPost id={item.id} data={item.data} />
+              <Post id={item.id} data={item.data} />
             )}
           />
         )}
