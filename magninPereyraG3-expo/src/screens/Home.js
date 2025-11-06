@@ -53,24 +53,32 @@ class Home extends Component {
 
 export default Home;
 
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 16,
+    backgroundColor: "#0d0d0d", 
   },
   title: {
-    fontSize: 28,
+    fontSize: 34,
     textAlign: "center",
-    marginVertical: 16,
-    fontWeight: "bold",
-    backgroundColor: ' #001258',
-    borderRadius: 5,
-    
+    marginVertical: 20,
+    fontWeight: "900",
+    color: "#ff1e1e",
+    textTransform: "uppercase",
+    letterSpacing: 2,
+    textShadowColor: "#000", 
+    textShadowOffset: { width: 2, height: 2 },      /* bno no me copa que sea offset o lo de text transform o sea anda por el inspeccionar que te lo tira asi pero hagamoslo manual*/
+    textShadowRadius: 6,     
+    borderBottomWidth: 2,
+    borderBottomColor: "#ff1e1e",
+    paddingBottom: 6,
   },
   noPosts: {
     fontSize: 16,
     textAlign: "center",
-    color: "#777",
+    color: "#ccc",
     marginTop: 20,
   },
 });
