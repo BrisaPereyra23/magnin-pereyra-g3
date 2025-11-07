@@ -13,16 +13,14 @@ class Login extends Component {
   }
 
   onSubmit (email, password) {
-
-  if (!email.includes('@')) {
-    this.setState({ error: 'Email mal formateado' });
-    return;
-  }
-  if (password.length < 6) {
-    this.setState({ error: 'La contraseña debe tener al menos 6 caracteres' });
-    return;
-  }
-
+    if (!email.includes('@')) {
+      this.setState({ error: 'Email mal formateado' });
+      return;
+    }
+    if (password.length < 6) {
+      this.setState({ error: 'La contraseña debe tener al menos 6 caracteres' });
+      return;
+    }
 
   auth.signInWithEmailAndPassword(email, password)
     .then(() => {
@@ -40,12 +38,9 @@ class Login extends Component {
   } else {
     this.setState({ error: 'Ocurrió un problema al iniciar sesión. Intente nuevamente.' });
   }
-});
-
-};
+});};
 
   render() {
-
     return (
       <View style={styles.container}>
         <Text style={styles.title}>Formulario de Login</Text>
@@ -56,16 +51,14 @@ class Login extends Component {
           autoCapitalize="none"
           keyboardType="email-address"
           onChangeText={(text) => this.setState({ email: text })}
-          value={this.state.email}
-        />
+          value={this.state.email}/>
 
         <TextInput
           style={styles.field}
           placeholder="Contraseña"
           secureTextEntry
           onChangeText={(text) => this.setState({ password: text })}
-          value={this.state.password}
-        />
+          value={this.state.password}/>
 
         <Pressable style={styles.button} onPress={() => this.onSubmit(this.state.email, this.state.password)}>
           <Text style={styles.buttonText}>Iniciar Sesión</Text>
@@ -73,20 +66,16 @@ class Login extends Component {
 
         <Pressable
           style={[styles.button, styles.buttonAlt]}
-          onPress={() => this.props.navigation.navigate('Register')}
-        >
+          onPress={() => this.props.navigation.navigate('Register')}>
           <Text style={styles.buttonText}>Registrate</Text>
         </Pressable>
 
         {this.state.error !== '' && (
-        <Text style={styles.errorText}>{this.state.error}</Text>
-        )}
+        <Text style={styles.errorText}>{this.state.error}</Text>)}
       </View>
     );
   }
 }
-
-
 
 export default Login;
 const styles = StyleSheet.create({

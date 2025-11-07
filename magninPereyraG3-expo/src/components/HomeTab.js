@@ -12,8 +12,7 @@ function HomeTab() {
       screenOptions={{
         headerShown: false,
         tabBarShowLabel: true,
-      }}
-    >
+      }}>
       <Tab.Screen
         name="Home"
         component={Home}
@@ -21,8 +20,7 @@ function HomeTab() {
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="home" size={size} color={color} />
           ),
-        }}
-      />
+        }}/>
       <Tab.Screen
         name="Profile"
         component={Profile}
@@ -30,8 +28,7 @@ function HomeTab() {
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="person" size={size} color={color} />
           ),
-        }}
-      />
+        }}/>
       <Tab.Screen
       name='New Post'
       component={NewPost}
@@ -39,8 +36,7 @@ function HomeTab() {
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="add-circle" size={size} color={color} />
           ),
-        }}
-      />
+        }}/>
     </Tab.Navigator>
   );
 }

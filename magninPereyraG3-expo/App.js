@@ -6,7 +6,6 @@ import Login from "./src/screens/Login";
 import Register from "./src/screens/Register";
 import HomeTab from "./src/components/HomeTab";
 
-
 const Stack = createNativeStackNavigator(); 
 function App() {
   return (

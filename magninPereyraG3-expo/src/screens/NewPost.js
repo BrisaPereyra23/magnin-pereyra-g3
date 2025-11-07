@@ -15,8 +15,7 @@ class NewPost extends Component {
   crearPost() {
     if (this.state.description === "") {
       this.setState({ error: "El post no puede estar vacío." });
-      return;
-    }
+      return;}
     db.collection("posts")
       .add({
         owner: auth.currentUser.email,
@@ -32,9 +31,7 @@ class NewPost extends Component {
       .catch(() => {
         this.setState({ error: "Error al crear el post." });
       });
-  
   }
-
 
   render() {
     return (
@@ -46,8 +43,7 @@ class NewPost extends Component {
           placeholder="Escribí tu post..."
           multiline
           onChangeText={(text) => this.setState({ description: text })}
-          value={this.state.description}
-        />
+          value={this.state.description}/>
 
         <Pressable style={styles.button} onPress={() => this.crearPost()}>
           <Text style={styles.buttonText}>Publicar</Text>

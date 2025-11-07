@@ -15,16 +15,14 @@ class Register extends Component {
   }
 
   onSubmit (email, password, username) {
-
-  if (!email.includes('@')) {
-    this.setState({ error: 'Email mal formateado' });
-    return;
-  }
-
-  if (password.length < 6) {
-    this.setState({ error: 'La contraseña debe tener al menos 6 caracteres' });
-    return;
-  }
+    if (!email.includes('@')) {
+      this.setState({ error: 'Email mal formateado' });
+      return;
+    }
+    if (password.length < 6) {
+      this.setState({ error: 'La contraseña debe tener al menos 6 caracteres' });
+      return;
+    }
 
   auth
     .createUserWithEmailAndPassword(email, password)
@@ -62,7 +60,6 @@ class Register extends Component {
     });
 };
 
-
   render() {
     return (
       <View style={styles.container}>
@@ -72,24 +69,20 @@ class Register extends Component {
           style={styles.field}
           placeholder="Email"
           onChangeText={(text) => this.setState({ email: text })}
-          value={this.state.email}
-          autoCapitalize="none"
-        />
+          value={this.state.email}/>
 
         <TextInput
           style={styles.field}
           placeholder="Usuario"
           onChangeText={(text) => this.setState({ username: text })}
-          value={this.state.username}
-        />
+          value={this.state.username}/>
 
         <TextInput
           style={styles.field}
           placeholder="Contraseña"
           secureTextEntry={true}
           onChangeText={(text) => this.setState({ password: text })}
-          value={this.state.password}
-        />
+          value={this.state.password}/>
 
         <Pressable style={styles.button} onPress={() => this.onSubmit(this.state.email, this.state.password, this.state.username)}>
           <Text style={styles.buttonText}>Registrarse</Text>
@@ -97,8 +90,7 @@ class Register extends Component {
 
         <Pressable
           style={[styles.button, {  }]}
-          onPress={() => this.props.navigation.navigate('Login')}
-        >
+          onPress={() => this.props.navigation.navigate('Login')}>
           <Text style={styles.buttonText}>Ir a Login</Text>
         </Pressable>
         {this.state.error !== '' && (
@@ -108,8 +100,6 @@ class Register extends Component {
     );
   }
 }
-
-
 
 export default Register;
 

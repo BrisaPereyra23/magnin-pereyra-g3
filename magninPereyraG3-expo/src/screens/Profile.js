@@ -20,10 +20,23 @@ class Profile extends Component {
 export default Profile;
 
 const styles = StyleSheet.create({
-  container: { flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#fff' },
-  title: { fontSize: 22, marginBottom: 20 },
-  info: { fontSize: 16, marginBottom: 30 },
-  button: { backgroundColor: "grey", padding: 10, borderRadius: 8 },
-  textButton: { color: '#fff', fontSize: 16 },
+  container: { 
+    flex: 1, 
+    alignItems: 'center', 
+    justifyContent: 'center', 
+    backgroundColor: '#fff' },
+  title: { 
+    fontSize: 22, 
+    marginBottom: 20 },
+  info: { 
+    fontSize: 16, 
+    marginBottom: 30 },
+  button: { 
+    backgroundColor: "grey", 
+    padding: 10, 
+    borderRadius: 8 },
+  textButton: { 
+    color: '#fff', 
+    fontSize: 16 },
 });
 
