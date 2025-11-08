@@ -20,23 +20,39 @@ class Profile extends Component {
 export default Profile;
 
 const styles = StyleSheet.create({
-  container: { 
-    flex: 1, 
-    alignItems: 'center', 
-    justifyContent: 'center', 
-    backgroundColor: '#fff' },
-  title: { 
-    fontSize: 22, 
-    marginBottom: 20 },
-  info: { 
-    fontSize: 16, 
-    marginBottom: 30 },
-  button: { 
-    backgroundColor: "grey", 
-    padding: 10, 
-    borderRadius: 8 },
-  textButton: { 
-    color: '#fff', 
-    fontSize: 16 },
+  container: {
+    flex: 1,
+    backgroundColor: '#0e0e0e',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 25,
+  },
+  title: {
+    fontSize: 28,
+    fontWeight: 'bold',
+    color: '#e50914',
+    marginBottom: 20,
+    textShadowColor: '#000',
+    textShadowOffset: { width: 2, height: 2 },
+    textShadowRadius: 4,
+  },
+  info: {
+    color: '#fff',
+    fontSize: 18,
+    marginBottom: 35,
+  },
+  button: {
+    backgroundColor: '#e50914',
+    paddingVertical: 12,
+    paddingHorizontal: 25,
+    borderRadius: 25,
+    shadowColor: '#e50914',
+    shadowOpacity: 0.5,
+    shadowRadius: 6,
+  },
+  textButton: {
+    color: '#fff',
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
 });
-
