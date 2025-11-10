@@ -4,87 +4,61 @@ import { db, auth } from '../firebase/config';
 
 class Post extends Component {
   constructor(props) {
-  super(props);
-  this.state = {
-    comment: "", 
-  };
-}
+    super(props);
+    this.state = {
+      comment: '', 
+    };
+  }
 
-    like () { 
-      if (!this.props.data.likes.includes (auth.currentUser.email)){
-        this.props.data.likes.push (auth.currentUser.email)
-        db.collection ("posts").doc (this.props.id).update ({
-          likes: this.props.data.likes
-        })
-      }}
-      
-    dislike() {
-      let nuevaLista = [];
-      for (let i=0; i< this.props.data.likes.length; i++){
-        if (this.props.data.likes[i] !== auth.currentUser.email){
-          nuevaLista.push (this.props.data.likes[i])
-        }
+  like() { 
+    if (!this.props.data.likes.includes(auth.currentUser.email)) {
+      this.props.data.likes.push(auth.currentUser.email);
+      db.collection('posts').doc(this.props.id).update({
+        likes: this.props.data.likes
+      });
+    }
+  }
+
+  dislike() {
+    let nuevaLista = [];
+    for (let i = 0; i < this.props.data.likes.length; i++) {
+      if (this.props.data.likes[i] !== auth.currentUser.email) {
+        nuevaLista.push(this.props.data.likes[i]);
       }
-      db.collection ("posts").doc (this.props.id).update ({
-        likes: nuevaLista
-      })
     }
+    db.collection('posts').doc(this.props.id).update({
+      likes: nuevaLista
+    });
+  }
     
-    comentar = () => { //preguntar lo de stack anidada o si va asi 
-      if (this.state.comment !== ""){
-        let comentario;
-    
-        if (this.props.data.comments){
-          comentario = this.props.data.comments;
-        } else {
-          comentario = [];
-        }
-    
-        comentario.push ({
-          owner: auth.currentUser.email,
-          comment: this.state.comment
-        })
-          
-        db.collection ("posts").doc (this.props.id).update ({ comments: comentario })
-        this.setState ({ comments: "" })
-        }
-    }
-    render() {
+
+  render() {
     return (
       <View style={styles.card}>
-      <Text style={styles.owner}>{this.props.data.owner}</Text>
-      <Text style={styles.description}>{this.props.data.description}</Text>
+        <Text style={styles.owner}>{this.props.data.owner}</Text>
+        <Text style={styles.description}>{this.props.data.description}</Text>
 
-      <View style={styles.likeRow}>
-        <Text style={styles.likesText}>❤️ {this.props.data.likes.length}</Text>
+        <View style={styles.likeRow}>
+          <Text style={styles.likesText}>❤️ {this.props.data.likes.length}</Text>
 
-        <Pressable style={styles.btnLike} onPress={() => this.like()}>
-          <Text style={styles.btnText}>Like</Text>
-        </Pressable>
+          <Pressable style={styles.btnLike} onPress={() => this.like()}>
+            <Text style={styles.btnText}>Like</Text>
+          </Pressable>
 
-        <Pressable style={styles.btnDislike} onPress={() => this.dislike()}>
-          <Text style={styles.btnText}>Dislike</Text>
+          <Pressable style={styles.btnDislike} onPress={() => this.dislike()}>
+            <Text style={styles.btnText}>Dislike</Text>
+          </Pressable>
+        </View>
+
+        <Pressable
+          style={styles.btn}
+          onPress={() => this.props.navigation.navigate('Comments', { id: this.props.id })}>
+          <Text style={styles.btnText}>Ver comentarios</Text>
         </Pressable>
       </View>
-    
-
-        <TextInput
-          style={styles.input}
-          placeholder="Escribí un comentario..."
-          value={this.state.comment}
-          onChangeText={(text) => this.setState({ comment: text })}/>
-
-        <Pressable style={styles.btn} onPress={() => this.comentar()}>
-          <Text style={styles.btnText}>Comentar</Text>
-        </Pressable>
-          {this.props.data.comments && this.props.data.comments.length > 0 && (
-          <View style={styles.commentSection}>
-          {this.props.data.comments.map((c, i) => (
-          <Text key={i}> {c.owner}: {c.comment}</Text>))}
-      </View>
-        )}
-      </View>);}}
-
+    );
+  }
+}
 export default Post;
       
 const styles = StyleSheet.create({

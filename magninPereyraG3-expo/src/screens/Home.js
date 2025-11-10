@@ -43,7 +43,7 @@ class Home extends Component {
             data={this.state.posts}
             keyExtractor={(item) => item.id.toString()}
             renderItem={({ item }) => (
-              <Post id={item.id} data={item.data} />
+              <Post id={item.id} data={item.data} navigation={this.props.navigation} />
             )}
           />
         )}
