@@ -40,7 +40,7 @@ class NewPost extends Component {
 
         <TextInput
           style={styles.field}
-          placeholder="Escribí tu post..."
+          placeholder="Escribí sobre tu auto, una carrera o una anécdota en la ruta..."
           onChangeText={(text) => this.setState({ description: text })}
           value={this.state.description}/>
 
@@ -56,25 +56,51 @@ class NewPost extends Component {
   }
 }
 
-const styles = StyleSheet.create({
-  container: { flex: 1, padding: 15, backgroundColor: "#fff" },
-  title: { fontSize: 22, textAlign: "center", marginBottom: 15 },
-  field: {
-    borderWidth: 1,
-    borderColor: "#ccc",
-    borderRadius: 8,
-    padding: 10,
-    minHeight: 80,
-    marginBottom: 15,
-  },
-  button: {
-    backgroundColor: "grey",
-    padding: 10,
-    borderRadius: 8,
-    alignItems: "center",
-  },
-  buttonText: { color: "#fff", fontSize: 16 },
-  error: { color: "red", textAlign: "center", marginTop: 10 },
-});
 
 export default NewPost;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#0e0e0e',
+    padding: 20,
+  },
+  title: {
+    fontSize: 28,
+    fontWeight: 'bold',
+    color: '#e50914',
+    textAlign: 'center',
+    marginBottom: 25,
+    textShadowColor: '#000',
+    textShadowOffset: { width: 2, height: 2 },
+    textShadowRadius: 4,
+  },
+  field: {
+    backgroundColor: '#f2f2f2',
+    borderRadius: 10,
+    padding: 15,
+    minHeight: 100,
+    fontSize: 16,
+    marginBottom: 20,
+  },
+  button: {
+    backgroundColor: '#e50914',
+    paddingVertical: 12,
+    borderRadius: 25,
+    alignItems: 'center',
+    shadowColor: '#e50914',
+    shadowOpacity: 0.5,
+    shadowRadius: 6,
+  },
+  buttonText: {
+    color: '#fff',
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  error: {
+    color: '#ff4d4d',
+    textAlign: 'center',
+    marginTop: 10,
+    fontSize: 14,
+  },
+});

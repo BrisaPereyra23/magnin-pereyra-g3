@@ -32,7 +32,8 @@ class Home extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.title}>Car Crew</Text>
+        <Text style={styles.title}>Car Crew 🏁 </Text>
+        <Text style = {styles.subtitle}>Publicaciones sobre autos: usuarios suben fotos o descripciones de sus autos, experiencias de manejo, consejos de mantenimiento o reseñas.</Text>
         {this.state.loading ? (
           <ActivityIndicator size="large" color="red" /> //ver si color se puede hacer en css
         ) : this.state.posts.length === 0 ? (
@@ -79,5 +80,18 @@ const styles = StyleSheet.create({
     textAlign: "center",
     color: "#ccc",
     marginTop: 20,
-  },
+  }, 
+   subtitle: {
+    color: '#b3b3b3',
+    fontSize: 16,
+    textAlign: 'center',
+    marginHorizontal: 20,
+    marginBottom: 25,
+    lineHeight: 22,
+    fontStyle: 'italic',
+    opacity: 0.9,
+    borderBottomWidth: 1,
+    borderBottomColor: '#ff1e1e',
+    paddingBottom: 8,
+  }
 });
