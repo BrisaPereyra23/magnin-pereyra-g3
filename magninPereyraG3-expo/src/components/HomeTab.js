@@ -22,14 +22,6 @@ function HomeTab() {
             <Ionicons name="home" size={size} color={color} />
           ),
         }}/>
-      {/*<Tab.Screen
-        name="Home"
-        component={Home}
-        options={{
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="home" size={size} color={color} />
-          ),
-        }}/>*/}
       <Tab.Screen
         name="Profile"
         component={Profile}

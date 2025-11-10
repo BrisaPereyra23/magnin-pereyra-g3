@@ -24,8 +24,7 @@ class Register extends Component {
       return;
     }
 
-  auth
-    .createUserWithEmailAndPassword(email, password)
+  auth.createUserWithEmailAndPassword(email, password)
     .then((response) => {
       console.log('Usuario creado:', response.user.email);
 
@@ -80,7 +79,6 @@ class Register extends Component {
         <TextInput
           style={styles.field}
           placeholder="Contraseña"
-          secureTextEntry={true}
           onChangeText={(text) => this.setState({ password: text })}
           value={this.state.password}/>
 

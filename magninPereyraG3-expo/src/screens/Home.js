@@ -32,7 +32,7 @@ class Home extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.title}> 🏁 CAR CREW 🏁 </Text>
+        <Text style={styles.title}> CAR CREW </Text>
         <Text style = {styles.subtitle}>Publicaciones sobre autos: usuarios suben fotos o descripciones de sus autos, experiencias de manejo, consejos de mantenimiento o reseñas.</Text>
         {this.state.loading ? (
           <ActivityIndicator size="large" color="red" /> 

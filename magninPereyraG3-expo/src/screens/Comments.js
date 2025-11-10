@@ -32,9 +32,7 @@ class Comment extends Component {
         comment: this.state.comment,
       });
 
-      db.collection("posts")
-        .doc(postId)
-        .update({ comments: comentarios })
+      db.collection("posts").doc(postId).update({ comments: comentarios })
         .then(() => {
           this.setState({ comment: "" });
         })
@@ -47,8 +45,7 @@ class Comment extends Component {
 
   return (
     <View style={styles.container}>
-      {
-        post && post.data ? (
+      {post && post.data ? (
           <View>
             <View style={styles.postHeader}>
               <Text style={styles.owner}>{post.data.owner}</Text>
@@ -75,9 +72,7 @@ class Comment extends Component {
       }
     </View>
   );
-}
-
-}
+}}
 
 export default Comment
 const styles = StyleSheet.create({

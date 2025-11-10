@@ -11,12 +11,11 @@ function HomeStack() {
       <Stack.Screen
         name="Home"
         component={Home}
-       options={{
+        options={{
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="home" size={size} color={color} />
           ),
-        }}
-      />
+        }}/>
       <Stack.Screen
         name="Comments"
         component={Comments}
@@ -24,8 +23,7 @@ function HomeStack() {
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="comments" size={size} color={color} />
           ),
-        }}
-      />
+        }}/>
     </Stack.Navigator>
   );
 }

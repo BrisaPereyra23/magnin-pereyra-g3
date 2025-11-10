@@ -18,11 +18,7 @@ class Profile extends Component {
     this.props.navigation.navigate('Login')
   }
   componentDidMount() {
-  db.collection('posts') //trae posts del usuario logueado
-    .where('owner', '==', auth.currentUser.email)
-    .orderBy('createdAt', 'desc')
-    .limit(5)
-    .onSnapshot(docs => {
+  db.collection('posts') .where('owner', '==', auth.currentUser.email).orderBy('createdAt', 'desc').limit(5).onSnapshot(docs => {
       let posts = [];
       docs.forEach(doc => {
         posts.push({
@@ -35,9 +31,7 @@ class Profile extends Component {
         loading: false,
       });
     });
-  db.collection('users') //traemos el nombre del usuario logueado
-    .where('email', '==', auth.currentUser.email)
-    .onSnapshot(docs => {
+  db.collection('users') .where('email', '==', auth.currentUser.email).onSnapshot(docs => {
       let userData = null;
       docs.forEach(doc => {
         userData = doc.data();
@@ -49,7 +43,8 @@ class Profile extends Component {
 }
 
   render () {
-    const { posteos, loading } = this.state;
+    const posteos = this.state.posteos;
+    const loading  = this.state.loading;
     return (
     <View style={styles.container}>
       <Text style={styles.title}> {this.state.username}</Text>
@@ -62,13 +57,11 @@ class Profile extends Component {
           data={posteos}
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => (
-    <View style={styles.postCard}>
-    <Text style={styles.postText}> {item.data.description}</Text>
-    <Text style={styles.postDate}> Este post se publico:{new Date(item.data.createdAt.toDate()).toLocaleDateString()}</Text>
-  </View>
-          )}
-        />
-      )}
+        <View style={styles.postCard}>
+          <Text style={styles.postText}> {item.data.description}</Text>
+          <Text style={styles.postDate}> Este post se publico:{new Date(item.data.createdAt.toDate()).toLocaleDateString()}</Text>
+        </View>
+          )}/>)}
       <Pressable style={styles.button} onPress={() => this.cerrarSesion()}> 
         <Text style={styles.textButton}>Cerrar sesión</Text>
       </Pressable>
@@ -116,18 +109,21 @@ button: {
   alignItems: 'center',
   margin: 24,
 },
-  info: {
+
+info: {
     color:'#fff',
     fontSize: 18,
     marginBottom: 20,
     fontWeight: '500',
-  },
+},
+
 noPosts: {
     fontSize: 16,
     marginBottom: 30,
     textAlign: 'center',
-  },
-  postCard: {
+},
+
+postCard: {
     padding: 3,
     margin: 2,
     backgroundColor: '#fff',
@@ -136,14 +132,16 @@ noPosts: {
     width: '100%',
     borderWidth: 1,
     
-  },
-  postText: {
+},
+  
+postText: {
     color:'#0e0e0e' ,
     fontSize: 16,
-  },
+},
+
 textButton: {
     color: '#0e0e0e',
     fontSize: 18,
     fontWeight: 'bold',
-  },
+},
 });
