@@ -1,20 +1,66 @@
 import React from 'react';
 import { Component } from 'react';
-import { View, Text, Pressable, StyleSheet} from 'react-native';
-import { auth }  from '../firebase/config';
+import { ActivityIndicator } from 'react-native';
+import { View, Text,FlatList, Pressable, StyleSheet} from 'react-native';
+import { db, auth } from '../firebase/config';
 
 class Profile extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      posteos: [],
+      loading: true,
+    };
+  }
   cerrarSesion (){
     auth.signOut()
     this.props.navigation.navigate('Login')
   }
+  
+  componentDidMount() {
+   db.collection('posts')
+      .where('owner', '==', auth.currentUser.email)
+      .orderBy('createdAt', 'desc')
+      .limit(5)
+      .onSnapshot(docs => {
+        let posts = [];
+
+        docs.forEach(doc => {
+       posts.push({
+       id: doc.id,
+       data: doc.data(),
+      });
+      });
+        this.setState({
+          posteos: posts,
+          loading: false,
+        });
+      });
+  }
   render () {
+    const { posteos, loading } = this.state;
     return (
     <View style={styles.container}>
       <Text style={styles.title}>Perfil del usuario</Text>
-
       <Text style={styles.info}>Email: {auth.currentUser ? auth.currentUser.email : ''}</Text> 
-
+      <Text style={styles.subtitle}> Últimos Posteos </Text>
+      {loading && (
+        <ActivityIndicator size="large" color="#e50914" />
+      )}
+      {!loading && posteos.length === 0 && (
+        <Text style={styles.noPosts}>Aún no publicaste nada.</Text>
+      )}
+      {!loading && posteos.length > 0 && (
+        <FlatList
+          data={posteos}
+          keyExtractor={(item) => item.id}
+          renderItem={({ item }) => (
+            <View style={styles.postCard}>
+              <Text style={styles.postText}>{item.data.description}</Text>
+            </View>
+          )}
+        />
+      )}
       <Pressable style={styles.button} onPress={() => this.cerrarSesion()}> 
         <Text style={styles.textButton}>Cerrar sesión</Text>
       </Pressable>
@@ -26,10 +72,10 @@ export default Profile;
 const styles = StyleSheet.create({
 container: {
     flex: 1,
-    backgroundColor: '#0e0e0e',
     alignItems: 'center',
     justifyContent: 'center',
     padding: 25,
+    backgroundColor: '#0e0e0e',
   },
 title: {
   fontSize: 28,
@@ -41,10 +87,11 @@ title: {
   borderBottomColor: '#b00610', 
   paddingBottom: 4,
 },
-info: {
-    color: '#fff',
+subtitle: {
     fontSize: 18,
-    marginBottom: 35,
+    fontWeight: 'bold',
+    color: '#e50914',
+    textAlign: 'center',
   },
 button: {
   backgroundColor: '#e50914',
@@ -54,9 +101,35 @@ button: {
   borderBottomWidth: 4,
   borderBottomColor: '#b00610', 
   alignItems: 'center',
+  margin: 24,
 },
+  info: {
+    color:'#fff',
+    fontSize: 18,
+    marginBottom: 20,
+    fontWeight: '500',
+  },
+noPosts: {
+    fontSize: 16,
+    marginBottom: 30,
+    textAlign: 'center',
+  },
+  postCard: {
+    padding: 10,
+    margin: 2,
+    backgroundColor: '#fff',
+    borderRadius: 10,
+    marginBottom: 15,
+    width: '100%',
+    borderWidth: 1,
+    
+  },
+  postText: {
+    color:'#0e0e0e' ,
+    fontSize: 16,
+  },
 textButton: {
-    color: '#fff',
+    color: '#0e0e0e',
     fontSize: 18,
     fontWeight: 'bold',
   },
