@@ -10,54 +10,62 @@ class Profile extends Component {
     this.state = {
       posteos: [],
       loading: true,
+      username: '',
     };
   }
   cerrarSesion (){
     auth.signOut()
     this.props.navigation.navigate('Login')
   }
-  
   componentDidMount() {
-   db.collection('posts')
-      .where('owner', '==', auth.currentUser.email)
-      .orderBy('createdAt', 'desc')
-      .limit(5)
-      .onSnapshot(docs => {
-        let posts = [];
-
-        docs.forEach(doc => {
-       posts.push({
-       id: doc.id,
-       data: doc.data(),
-      });
-      });
-        this.setState({
-          posteos: posts,
-          loading: false,
+  db.collection('posts') //trae posts del usuario logueado
+    .where('owner', '==', auth.currentUser.email)
+    .orderBy('createdAt', 'desc')
+    .limit(5)
+    .onSnapshot(docs => {
+      let posts = [];
+      docs.forEach(doc => {
+        posts.push({
+          id: doc.id,
+          data: doc.data(),
         });
       });
-  }
+      this.setState({
+        posteos: posts,
+        loading: false,
+      });
+    });
+  db.collection('users') //traemos el nombre del usuario logueado
+    .where('email', '==', auth.currentUser.email)
+    .onSnapshot(docs => {
+      let userData = null;
+      docs.forEach(doc => {
+        userData = doc.data();
+      });
+      if (userData) {
+        this.setState({ username: userData.username });
+      }
+    });
+}
+
   render () {
     const { posteos, loading } = this.state;
     return (
     <View style={styles.container}>
-      <Text style={styles.title}>Perfil del usuario</Text>
+      <Text style={styles.title}> {this.state.username}</Text>
       <Text style={styles.info}>Email: {auth.currentUser ? auth.currentUser.email : ''}</Text> 
       <Text style={styles.subtitle}> Últimos Posteos </Text>
-      {loading && (
-        <ActivityIndicator size="large" color="#e50914" />
-      )}
-      {!loading && posteos.length === 0 && (
-        <Text style={styles.noPosts}>Aún no publicaste nada.</Text>
-      )}
+      {loading && (<ActivityIndicator size="large" color="#e50914" />)}
+      {!loading && posteos.length === 0 && (<Text style={styles.noPosts}> Aún no publicaste nada.</Text>)}
       {!loading && posteos.length > 0 && (
         <FlatList
           data={posteos}
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => (
-            <View style={styles.postCard}>
-              <Text style={styles.postText}>{item.data.description}</Text>
-            </View>
+    <View style={styles.postCard}>
+    <Text style={styles.postText}> {item.data.description}</Text>
+    <Text style={styles.postDate}> Este post se publico:{new Date(item.data.createdAt.toDate()).toLocaleDateString()}</Text>
+  </View>
           )}
         />
       )}
@@ -74,7 +82,6 @@ container: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    padding: 25,
     backgroundColor: '#0e0e0e',
   },
 title: {
@@ -93,6 +100,12 @@ subtitle: {
     color: '#e50914',
     textAlign: 'center',
   },
+  postDate: {
+  fontSize: 12,
+  color: '#666',
+  marginTop: 5,
+},
+
 button: {
   backgroundColor: '#e50914',
   paddingVertical: 12,
@@ -115,7 +128,7 @@ noPosts: {
     textAlign: 'center',
   },
   postCard: {
-    padding: 10,
+    padding: 3,
     margin: 2,
     backgroundColor: '#fff',
     borderRadius: 10,
