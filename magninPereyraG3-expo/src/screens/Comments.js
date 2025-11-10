@@ -11,10 +11,7 @@ class Comment extends Component {
     };
   }
   componentDidMount() {
-   
   const postId =this.props.route.params.id
-
-
   if (postId) {
     db.collection("posts").doc(postId).onSnapshot((doc) => {
         if (doc.exists) {
