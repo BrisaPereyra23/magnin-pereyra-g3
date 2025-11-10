@@ -30,9 +30,9 @@ function HomeTab() {
           ),
         }}/>
       <Tab.Screen
-      name='New Post'
-      component={NewPost}
-      options={{
+        name='New Post'
+        component={NewPost}
+        options={{
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="add-circle" size={size} color={color} />
           ),

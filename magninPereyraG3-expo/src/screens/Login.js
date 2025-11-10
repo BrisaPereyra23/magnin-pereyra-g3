@@ -22,12 +22,13 @@ class Login extends Component {
       return;
     }
 
-  auth.signInWithEmailAndPassword(email, password)
+  auth.signInWithEmailAndPassword(email, password)/*ver de cambiar esto */
     .then(() => {
       this.props.navigation.navigate('HomeTab');
     })
     .catch((error) => { 
   console.log('Error al iniciar sesión:', error);
+
 
   if (error.code === 'auth/invalid-email') {
     this.setState({ error: 'Email mal formateado' });

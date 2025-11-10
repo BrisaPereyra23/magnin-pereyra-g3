@@ -30,7 +30,7 @@ class Post extends Component {
       })
     }
     
-    comentar = () => {
+    comentar = () => { //preguntar lo de stack anidada o si va asi 
       if (this.state.comment !== ""){
         let comentario;
     
@@ -88,7 +88,7 @@ class Post extends Component {
 export default Post;
       
 const styles = StyleSheet.create({
-  card: {
+  card: { //ver este css
     borderRadius: 14,
     borderWidth: 1,
     borderColor: "#ddd",

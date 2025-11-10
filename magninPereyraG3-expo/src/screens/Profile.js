@@ -9,9 +9,9 @@ class Profile extends Component {
     <View style={styles.container}>
       <Text style={styles.title}>Perfil del usuario</Text>
 
-      <Text style={styles.info}>Email: {auth.currentUser ? auth.currentUser.email : ''}</Text>
+      <Text style={styles.info}>Email: {auth.currentUser ? auth.currentUser.email : ''}</Text> {/*Preguntar si dejo el condicional o si pongo directamente solo 1 auth */}
 
-      <Pressable style={styles.button} onPress={() => this.props.navigation.navigate('Login')}> 
+      <Pressable style={styles.button} onPress={() => this.props.navigation.navigate('Login')}> {/*preguntar si lo hago asi o con logOut auth.singOut */}
         <Text style={styles.textButton}>Cerrar sesión</Text>
       </Pressable>
     </View>
