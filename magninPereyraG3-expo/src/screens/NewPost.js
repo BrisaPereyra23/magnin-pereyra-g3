@@ -22,7 +22,7 @@ class NewPost extends Component {
         description: this.state.description,
         likes: [],
         comments: [],
-        createdAt: new Date(), 
+        createdAt: Date.now(), 
       })
       .then(() => {
         this.setState({ description: "", error: "" });

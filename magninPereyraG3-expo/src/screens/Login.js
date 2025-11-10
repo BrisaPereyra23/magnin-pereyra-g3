@@ -74,6 +74,7 @@ class Login extends Component {
 }
 
 export default Login;
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,

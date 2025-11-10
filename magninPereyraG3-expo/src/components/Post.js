@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { View, Text, TextInput, Pressable, StyleSheet } from 'react-native';
+import { View, Text, Pressable, StyleSheet } from 'react-native';
 import { db, auth } from '../firebase/config';
+import firebase from 'firebase';
 
 class Post extends Component {
   constructor(props) {
@@ -10,27 +11,22 @@ class Post extends Component {
     };
   }
 
-  like() { 
-    if (!this.props.data.likes.includes(auth.currentUser.email)) {
-      this.props.data.likes.push(auth.currentUser.email);
-      db.collection('posts').doc(this.props.id).update({
-        likes: this.props.data.likes
-      });
-    }
-  }
-
-  dislike() {
-    let nuevaLista = [];
-    for (let i = 0; i < this.props.data.likes.length; i++) {
-      if (this.props.data.likes[i] !== auth.currentUser.email) {
-        nuevaLista.push(this.props.data.likes[i]);
-      }
-    }
-    db.collection('posts').doc(this.props.id).update({
-      likes: nuevaLista
+  like() {
+  db.collection('posts')
+    .doc(this.props.id)
+    .update({
+      likes: firebase.firestore.FieldValue.arrayUnion(auth.currentUser.email)
     });
-  }
-    
+}
+
+dislike() {
+  db.collection('posts')
+    .doc(this.props.id)
+    .update({
+      likes: firebase.firestore.FieldValue.arrayRemove(auth.currentUser.email)
+    });
+}
+
 
   render() {
     return (
