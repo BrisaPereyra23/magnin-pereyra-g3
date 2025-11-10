@@ -89,18 +89,17 @@ export default Post;
       
 const styles = StyleSheet.create({
   card: {
-    borderRadius: 14,
-    borderWidth: 1,
-    borderColor: "#ddd",
-    padding: 15,
-    marginVertical: 10,
-    backgroundColor: "#fff", 
-    shadowColor: "#000",
-    shadowOpacity: 0.1,
-    shadowRadius: 5,
-    shadowOffset: { width: 0, height: 2 },
-    elevation: 3,
-  },
+  borderRadius: 14,
+  borderWidth: 1,
+  borderColor: "#ddd",
+  padding: 15,
+  marginVertical: 10,
+  backgroundColor: "#fff",
+  borderBottomWidth: 3,
+  borderBottomColor: "#ccc",
+  backgroundColor: "#fefefe",
+}
+,
   owner: {
     fontWeight: "bold",
     color: "#131111",
