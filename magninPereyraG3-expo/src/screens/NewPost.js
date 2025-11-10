@@ -36,7 +36,7 @@ class NewPost extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.title}>Nuevo Post</Text>
+        <Text style={styles.title}> 🏁 NEW POST 🏁 </Text>
 
         <TextInput
           style={styles.field}
@@ -71,9 +71,9 @@ const styles = StyleSheet.create({
     color: '#e50914',
     textAlign: 'center',
     marginBottom: 25,
-    textShadowColor: '#000',
-    textShadowOffset: { width: 2, height: 2 },
-    textShadowRadius: 4,
+    borderBottomWidth: 2,
+    borderBottomColor: '#b00610',
+    paddingBottom: 4,
   },
   field: {
     backgroundColor: '#f2f2f2',

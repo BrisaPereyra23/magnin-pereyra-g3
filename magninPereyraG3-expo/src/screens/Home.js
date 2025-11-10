@@ -32,10 +32,10 @@ class Home extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.title}>Car Crew 🏁 </Text>
+        <Text style={styles.title}> 🏁 CAR CREW 🏁 </Text>
         <Text style = {styles.subtitle}>Publicaciones sobre autos: usuarios suben fotos o descripciones de sus autos, experiencias de manejo, consejos de mantenimiento o reseñas.</Text>
         {this.state.loading ? (
-          <ActivityIndicator size="large" color="red" /> //ver si color se puede hacer en css
+          <ActivityIndicator size="large" color="red" /> 
         ) : this.state.posts.length === 0 ? (
           <Text style={styles.noPosts}>Todavía no hay publicaciones.</Text>
         ) : (
@@ -61,20 +61,16 @@ const styles = StyleSheet.create({
     backgroundColor: "#0d0d0d", 
   },
   title: {
-    fontSize: 34,
-    textAlign: "center",
-    marginVertical: 20,
-    fontWeight: "900",
-    color: "#ff1e1e",
-    textTransform: "uppercase",
-    letterSpacing: 2,
-    textShadowColor: "#000", 
-    textShadowOffset: { width: 2, height: 2 },      /* bno no me copa que sea offset o lo de text transform o sea anda por el inspeccionar que te lo tira asi pero hagamoslo manual*/
-    textShadowRadius: 6,     
-    borderBottomWidth: 2,
-    borderBottomColor: "#ff1e1e",
-    paddingBottom: 6,
-  },
+  fontSize: 34,              
+  textAlign: "center",      
+  marginVertical: 20,       
+  fontWeight: "900",       
+  color: "#ff1e1e",       
+  textShadowColor: "#000",
+  borderBottomWidth: 2,      
+  borderBottomColor: "#ff1e1e",
+  paddingBottom: 6,                   
+},
   noPosts: {
     fontSize: 16,
     textAlign: "center",

@@ -20,37 +20,38 @@ class Profile extends Component {
 export default Profile;
 
 const styles = StyleSheet.create({
-  container: {
+container: {
     flex: 1,
     backgroundColor: '#0e0e0e',
     alignItems: 'center',
     justifyContent: 'center',
     padding: 25,
   },
-  title: {
-    fontSize: 28,
-    fontWeight: 'bold',
-    color: '#e50914',
-    marginBottom: 20,
-    textShadowColor: '#000',
-    textShadowOffset: { width: 2, height: 2 },
-    textShadowRadius: 4,
-  },
-  info: {
+title: {
+  fontSize: 28,
+  fontWeight: 'bold',
+  color: '#e50914',
+  marginBottom: 20,
+  textAlign: 'center',
+  borderBottomWidth: 2,
+  borderBottomColor: '#b00610', 
+  paddingBottom: 4,
+},
+info: {
     color: '#fff',
     fontSize: 18,
     marginBottom: 35,
   },
-  button: {
-    backgroundColor: '#e50914',
-    paddingVertical: 12,
-    paddingHorizontal: 25,
-    borderRadius: 25,
-    shadowColor: '#e50914',
-    shadowOpacity: 0.5,
-    shadowRadius: 6,
-  },
-  textButton: {
+button: {
+  backgroundColor: '#e50914',
+  paddingVertical: 12,
+  paddingHorizontal: 25,
+  borderRadius: 25,
+  borderBottomWidth: 4,
+  borderBottomColor: '#b00610', 
+  alignItems: 'center',
+},
+textButton: {
     color: '#fff',
     fontSize: 18,
     fontWeight: 'bold',

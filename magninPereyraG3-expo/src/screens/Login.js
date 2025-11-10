@@ -93,7 +93,6 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     marginBottom: 30,
     textAlign: "center",
-    letterSpacing: 1,
   },
   field: {
     width: "90%",
