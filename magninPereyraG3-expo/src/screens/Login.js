@@ -22,24 +22,22 @@ class Login extends Component {
       return;
     }
 
-  auth.signInWithEmailAndPassword(email, password)/*ver de cambiar esto */
+  auth.signInWithEmailAndPassword(email, password)
     .then(() => {
       this.props.navigation.navigate('HomeTab');
     })
     .catch((error) => { 
-  console.log('Error al iniciar sesión:', error);
-
-
-  if (error.code === 'auth/invalid-email') {
-    this.setState({ error: 'Email mal formateado' });
-  } else if (error.code === 'auth/wrong-password') {
-    this.setState({ error: 'Contraseña incorrecta' });
-  } else if (error.code === 'auth/user-not-found') {
-    this.setState({ error: 'Usuario no encontrado' });
-  } else {
-    this.setState({ error: 'Ocurrió un problema al iniciar sesión. Intente nuevamente.' });
-  }
-});};
+    console.log('Error al iniciar sesión:', error);
+    if (error.code === 'auth/invalid-email') {
+      this.setState({ error: 'Email mal formateado' });
+    } else if (error.code === 'auth/wrong-password') {
+      this.setState({ error: 'Contraseña incorrecta' });
+    } else if (error.code === 'auth/user-not-found') {
+      this.setState({ error: 'Usuario no encontrado' });
+    } else {
+      this.setState({ error: 'Ocurrió un problema al iniciar sesión. Intente nuevamente.' });
+    }
+  });};
 
   render() {
     return (
