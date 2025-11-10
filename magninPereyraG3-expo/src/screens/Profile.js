@@ -4,14 +4,18 @@ import { View, Text, Pressable, StyleSheet} from 'react-native';
 import { auth }  from '../firebase/config';
 
 class Profile extends Component {
+  cerrarSesion (){
+    auth.signOut()
+    this.props.navigation.navigate('Login')
+  }
   render () {
     return (
     <View style={styles.container}>
       <Text style={styles.title}>Perfil del usuario</Text>
 
-      <Text style={styles.info}>Email: {auth.currentUser ? auth.currentUser.email : ''}</Text> {/*Preguntar si dejo el condicional o si pongo directamente solo 1 auth */}
+      <Text style={styles.info}>Email: {auth.currentUser ? auth.currentUser.email : ''}</Text> 
 
-      <Pressable style={styles.button} onPress={() => this.props.navigation.navigate('Login')}> {/*preguntar si lo hago asi o con logOut auth.singOut */}
+      <Pressable style={styles.button} onPress={() => this.cerrarSesion()}> 
         <Text style={styles.textButton}>Cerrar sesión</Text>
       </Pressable>
     </View>

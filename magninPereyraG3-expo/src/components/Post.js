@@ -10,7 +10,7 @@ class Post extends Component {
   };
 }
 
-    like = () => { // no vimos con => pero lo pongo para que no marque error y hay que preguntar
+    like () { 
       if (!this.props.data.likes.includes (auth.currentUser.email)){
         this.props.data.likes.push (auth.currentUser.email)
         db.collection ("posts").doc (this.props.id).update ({
@@ -18,7 +18,7 @@ class Post extends Component {
         })
       }}
       
-    dislike = () => {
+    dislike() {
       let nuevaLista = [];
       for (let i=0; i< this.props.data.likes.length; i++){
         if (this.props.data.likes[i] !== auth.currentUser.email){
