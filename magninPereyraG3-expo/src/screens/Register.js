@@ -87,7 +87,7 @@ class Register extends Component {
         </Pressable>
 
         <Pressable
-          style={[styles.button, {  }]}
+          style={styles.button}
           onPress={() => this.props.navigation.navigate('Login')}>
           <Text style={styles.buttonText}>Ir a Login</Text>
         </Pressable>
